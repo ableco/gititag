@@ -31,7 +31,7 @@ const { computeLatest } = require("./utils");
   const toBeVersion = `v${inc(latest, patchTypes[result.selectedIndex])}`;
 
   term("This will bump ").yellow(latest)(" to ").green(toBeVersion)(
-    "\nAre you sure you want to push this? [y|N]\n"
+    "\nCreate tag locally? [y|N]\n"
   );
   prompt = term.yesOrNo({ yes: ["y", "Y"], no: ["n", "N", "ENTER"] });
   result = await prompt.promise;
@@ -39,10 +39,25 @@ const { computeLatest } = require("./utils");
     term.red("'No' detected. Good bye!\n");
     process.exit();
   }
-  term.spinner();
-
   const { name: tag } = await git.addTag(toBeVersion);
-  const a = await git.push("origin", `refs/tags/${tag}`, ["--force"]);
+
+  term("\nTag created successfully!\n\n");
+
+  term("Type ")
+    .green("yes")(" to push ")
+    .green(toBeVersion)(" to ")
+    .cyan("origin ")
+    .gray("(anything else will exit program)")(":\n");
+  term(">");
+  const input = await term.inputField().promise;
+  if (input !== "yes") {
+    term.red("\nExiting program. Good bye!\n");
+    process.exit();
+  }
+
+  term("\n");
+  term.spinner();
+  await git.push("origin", `refs/tags/${tag}`, ["--force"]);
 
   term.green("\nDone!")(" Released ").green(`${toBeVersion}\n`);
   process.exit();
