@@ -1,6 +1,6 @@
 const term = require("terminal-kit").terminal;
 const simpleGit = require("simple-git");
-const git = simpleGit();
+const git = simpleGit(process.cwd());
 const inc = require("semver/functions/inc");
 const { computeLatest } = require("./utils");
 
@@ -17,7 +17,7 @@ const { computeLatest } = require("./utils");
   }
 
   const latest = computeLatest(await git.tags());
-  term("Latest version detected: ").green("%s\n", latest);
+  term("Latest version detected: ").yellow("%s\n", latest);
   term("What kind of release is this?");
 
   const patchTypes = ["patch", "minor", "major"];
@@ -38,7 +38,11 @@ const { computeLatest } = require("./utils");
     term.red("'No' detected. Good bye!\n");
     process.exit();
   }
-  term.green("All done.\n");
+  term.spinner();
 
+  const { name: tag } = await git.addTag(toBeVersion);
+  const a = await git.push("origin", `refs/tags/${tag}`, ["--force"]);
+
+  term.green("\nDone!")(" Released ").green(`${toBeVersion}\n`);
   process.exit();
 })();
