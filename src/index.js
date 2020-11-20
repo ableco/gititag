@@ -1,6 +1,7 @@
 const term = require("terminal-kit").terminal;
 const simpleGit = require("simple-git");
 const git = simpleGit();
+const { computeLatest } = require("./utils");
 
 (async () => {
   const { current: branch } = await git.branch();
@@ -14,6 +15,8 @@ const git = simpleGit();
     process.exit();
   }
 
-  term.green("'Yes' detected! See ya soon!\n");
+  const latest = computeLatest(await git.tags());
+  term("Latest version detected: ").green("%s\n", latest);
+
   process.exit();
 })();

@@ -6,6 +6,7 @@
   "author": "caxco93",
   "license": "MIT",
   "dependencies": {
+    "semver": "^7.3.2",
     "simple-git": "^2.23.0",
     "terminal-kit": "^1.44.0"
   }
