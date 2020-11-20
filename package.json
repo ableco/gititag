@@ -6,6 +6,7 @@
   "author": "caxco93",
   "license": "MIT",
   "dependencies": {
+    "simple-git": "^2.23.0",
     "terminal-kit": "^1.44.0"
   }
 }
