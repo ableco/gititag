@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const term = require("terminal-kit").terminal;
 const simpleGit = require("simple-git");
 const git = simpleGit(process.cwd());

@@ -1,6 +1,6 @@
 {
   "name": "gititag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An interactive git tag creator",
   "main": "src/index.js",
   "author": "caxco93",
@@ -9,5 +9,15 @@
     "semver": "^7.3.2",
     "simple-git": "^2.23.0",
     "terminal-kit": "^1.44.0"
-  }
+  },
+  "bin": {
+    "gititag": "./src/index.js"
+  },
+  "keywords": [
+    "git",
+    "interactive",
+    "tag",
+    "release",
+    "cli"
+  ]
 }
