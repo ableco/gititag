@@ -1,0 +1,11 @@
+{
+  "name": "gititag",
+  "version": "1.0.0",
+  "description": "An interactive git tag creator",
+  "main": "src/index.js",
+  "author": "caxco93",
+  "license": "MIT",
+  "dependencies": {
+    "terminal-kit": "^1.44.0"
+  }
+}
