@@ -1,6 +1,6 @@
 {
   "name": "gititag",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "An interactive git tag creator",
   "main": "src/index.js",
   "author": "caxco93",
@@ -16,7 +16,7 @@
   "scripts": {
     "test": "jest"
   },
-  "homepage": "https://github.com/benjaminAble/gititag",
+  "homepage": "https://github.com/ableco/gititag",
   "keywords": [
     "git",
     "interactive",
