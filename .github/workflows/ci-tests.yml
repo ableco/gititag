@@ -7,6 +7,7 @@ jobs:
     name: Tests
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
