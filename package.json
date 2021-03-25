@@ -1,6 +1,6 @@
 {
   "name": "gititag",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An interactive git tag creator",
   "main": "src/index.js",
   "author": "caxco93",
