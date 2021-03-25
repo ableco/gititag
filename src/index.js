@@ -41,18 +41,23 @@ const { computeLatest } = require("./utils");
   }
   const { name: tag } = await git.addTag(toBeVersion);
 
-  term("\nTag created successfully!\n\n");
+  term("\nTag created successfully!\n");
 
-  term("Type ")
-    .green("yes")(" to push ")
-    .green(toBeVersion)(" to ")
-    .cyan("origin ")
-    .gray("(anything else will exit program)")(":\n");
-  term(">");
-  const input = await term.inputField().promise;
-  if (input !== "yes") {
-    term.red("\nExiting program. Good bye!\n");
-    process.exit();
+  let input;
+  while (input !== "yes" && input !== "no") {
+    term("\nType ")
+      .green("yes")(" to push ")
+      .green(toBeVersion)(" to ")
+      .cyan("origin ")
+      .gray("(")
+      .red("no")
+      .gray(" will exit program)")(":\n");
+    term(">");
+    input = await term.inputField().promise;
+    if (input === "no") {
+      term.red("\nExiting program. Good bye!\n");
+      process.exit();
+    }
   }
 
   term("\n");
