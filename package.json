@@ -8,7 +8,7 @@
   "dependencies": {
     "semver": "^7.3.2",
     "simple-git": "^2.23.0",
-    "terminal-kit": "^1.44.0"
+    "terminal-kit": "^2.1.8"
   },
   "bin": {
     "gititag": "./src/index.js"
